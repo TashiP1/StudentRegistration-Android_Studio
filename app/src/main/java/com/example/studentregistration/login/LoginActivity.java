@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.studentregistration.NewStudent.NewRegistration;
 import com.example.studentregistration.R;
 import com.example.studentregistration.StdCard;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void sendToMain(){
-        Intent mainIntent = new Intent(LoginActivity.this , StdCard.class);
+        Intent mainIntent = new Intent(LoginActivity.this , NewRegistration.class);
         startActivity(mainIntent);
         finish();
     }

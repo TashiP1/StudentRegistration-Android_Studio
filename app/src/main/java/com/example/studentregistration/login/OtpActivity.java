@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.studentregistration.NewStudent.NewRegistration;
 import com.example.studentregistration.R;
 import com.example.studentregistration.StdCard;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -74,7 +75,7 @@ public class OtpActivity extends AppCompatActivity {
     }
 
     private void sendToMain(){
-        startActivity(new Intent(OtpActivity.this , StdCard.class));
+        startActivity(new Intent(OtpActivity.this , NewRegistration.class));
         finish();
     }
 }

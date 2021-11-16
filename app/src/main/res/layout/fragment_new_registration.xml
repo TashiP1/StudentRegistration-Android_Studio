@@ -91,5 +91,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />
+
+        <Button
+            android:id="@+id/log_out_btn"
+            android:layout_width="154dp"
+            android:layout_height="53dp"
+            android:text="Log out"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

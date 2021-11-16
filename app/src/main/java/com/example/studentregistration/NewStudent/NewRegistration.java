@@ -1,5 +1,6 @@
 package com.example.studentregistration.NewStudent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentregistration.R;
+import com.example.studentregistration.StdCard;
+import com.example.studentregistration.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +43,9 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     RegistrationDetails registrationDetails;
     int i =0;
 
+    private Button mLogOutBtn;
+    private FirebaseAuth mAuth;
+
     String[] department = {"Choose Department", "IT", "Civel", "Geology", "ECE"};
 
     @Override
@@ -58,6 +66,18 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         c3 = view.findViewById(R.id.sherabtse);
         spinner = view.findViewById(R.id.spinner);
         registrationDetails = new RegistrationDetails();
+
+        mAuth = FirebaseAuth.getInstance();
+        mLogOutBtn = view.findViewById(R.id.log_out_btn);
+
+        mLogOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(getContext() , LoginActivity.class));
+                getActivity().finish();
+            }
+        });
 
         String d1 = "Cst";
         String d2 = "Gedu";
@@ -159,6 +179,16 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         else{
             registrationDetails.setDepartment(item);
             reference.child(String.valueOf(i+1)).setValue(registrationDetails);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null){
+            startActivity(new Intent(getContext() , LoginActivity.class));
+            getActivity().finish();
         }
     }
 }
