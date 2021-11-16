@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">StudentRegistration</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="about">About Us</string>
+    <string name="feedback">Feedback</string>
+    <string name="rate">Rate Us</string>
+    <string name="home">Online Registration</string>
+    <string name="cst">College of Science and Technology</string>
+    <string name="Name">Name</string>
+    <string name="New">RegisNewStudent</string>
+    <string name="cont">
+        1.Tashi Phutsho-#177777\n
+        2.Sangay Tenzin-#17777 \n
+        3.Namgay Wangchuk-#17777 \n
+        4.Sonam Rabgay-#1777 \n
+    </string>
+    <string name="text2">Create an online registration form to embed in your website or share directly through a unique URL that you get from forms.app. If you would like to, you can start quickly with our ready-made online registration form template and customize its fields, design, and general settings however you like. It is completely FREE and requires no coding skills.</string>
+    <string name="text1">create_an_online_registration_form_to_embed_in_your_website_or_share_directly_through_a_unique_url_that_you_get_from_forms_app_if_you_would_like_to_you_can_start_quickly_with_our_ready_made_online_registration_form_template_and_customize_its_fields_design_and_general_settings_however_you_like_it_is_completely_free_and_requires_no_coding_skills</string>
+    <string name="ourApp">About Our App</string>
+    <string name="Contact">Contact Us</string>
+    <string name="Newcst">New Student Registration Section</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rate_app_title">Rate App</string>
+    <string name="rate_app_message">If you are enjoying our app, please take a moment to rate it on PlayStore. Thanks for your support!</string>
+    <string name="rate_btn_pos">Rate Now</string>
+
+    <string name="rate_btn_nut">No, Thanks</string>
+    <string name="massage">Thank You For Using Our App.
+        Don\'t forget to Rate US.Your support is always in our heart.</string>
+    <string name="motto">"In pursuit of preparing tomorrow's technologist"</string>
+
+</resources>
+
+
+
+

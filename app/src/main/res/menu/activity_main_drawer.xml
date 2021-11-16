@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/nav_home_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_work_24"
+            android:title="@string/home" />
+    </group>
+    <group android:id="@+id/nav_aboutgroup"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_baseline_device_unknown_24"
+            android:title="@string/about" />
+    </group>
+    <group android:id="@+id/nav_feedback_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_baseline_feedback_24"
+            android:title="@string/feedback" />
+    </group>
+    <group android:id="@+id/nav_rate_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_baseline_star_rate_24"
+            android:title="@string/rate" />
+    </group>
+</menu>
