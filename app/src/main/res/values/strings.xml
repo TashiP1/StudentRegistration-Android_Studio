@@ -35,7 +35,8 @@
     <string name="massage">Thank You For Using Our App.
         Don\'t forget to Rate US.Your support is always in our heart.</string>
     <string name="motto">"In pursuit of preparing tomorrow's technologist"</string>
-
+    <string name="otp">Please Enter Your Counter code mobile number to receive OTP</string>
+    <string name="otp_received">OTP has been sent to your Number Please verify</string>
 </resources>
 
 

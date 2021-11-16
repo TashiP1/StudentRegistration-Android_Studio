@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.studentregistration">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,21 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentRegistration">
         <activity
-            android:name=".NewStudent.NewStudentRegistration"
-            android:parentActivityName=".MainActivity"
+            android:name=".login.OtpActivity"
             android:exported="false" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewStudent.NewStudentRegistration"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ChangeCourse"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".StdCard"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ExistingStudentregis"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="250dp"
+            app:srcCompat="@drawable/verify" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Verification Code"
+            android:textAlignment="center"
+            android:textColor="#090808"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/otp"
+            android:textAlignment="center"
+            android:textColor="#090808"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_country_code"
+                android:layout_width="30dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="+975"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textAlignment="textEnd"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/input_phone"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Enter your number"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sent_code"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Sent OTP"
+            android:textColor="#0C0A0A"
+            app:backgroundTint="#0CB2FD" />
+
+        <TextView
+            android:id="@+id/processText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
