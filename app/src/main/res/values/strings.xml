@@ -20,12 +20,12 @@
         3.Namgay Wangchuk-#17777 \n
         4.Sonam Rabgay-#1777 \n
     </string>
+
     <string name="text2">Create an online registration form to embed in your website or share directly through a unique URL that you get from forms.app. If you would like to, you can start quickly with our ready-made online registration form template and customize its fields, design, and general settings however you like. It is completely FREE and requires no coding skills.</string>
     <string name="text1">create_an_online_registration_form_to_embed_in_your_website_or_share_directly_through_a_unique_url_that_you_get_from_forms_app_if_you_would_like_to_you_can_start_quickly_with_our_ready_made_online_registration_form_template_and_customize_its_fields_design_and_general_settings_however_you_like_it_is_completely_free_and_requires_no_coding_skills</string>
     <string name="ourApp">About Our App</string>
     <string name="Contact">Contact Us</string>
     <string name="Newcst">New Student Registration Section</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rate_app_title">Rate App</string>
     <string name="rate_app_message">If you are enjoying our app, please take a moment to rate it on PlayStore. Thanks for your support!</string>
@@ -37,6 +37,25 @@
     <string name="motto">"In pursuit of preparing tomorrow's technologist"</string>
     <string name="otp">Please Enter Your Counter code mobile number to receive OTP</string>
     <string name="otp_received">OTP has been sent to your Number Please verify</string>
+
+    <string name="regisForm">Registration Form</string>
+    <string name="springSem">Spring Semester</string>
+    <string name="autumnSem">Autumn Semester</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="year">Academic Year</string>
+    <string name="name">Name</string>
+    <string name="cid">CID</string>
+    <string name="dob">Date of Birth</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="mail">Email Id</string>
+    <string name="pname">Parent Name</string>
+    <string name="pnumber">Mobile No of Parent</string>
+    <string name="eparent">Email of Parent</string>
+    <string name="cparent">Current Address of Parent</string>
+    <string name="log">Log Out</string>
+
+
 </resources>
 
 

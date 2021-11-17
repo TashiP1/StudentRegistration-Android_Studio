@@ -13,7 +13,8 @@
         android:theme="@style/Theme.StudentRegistration">
         <activity
             android:name=".login.OtpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
@@ -30,7 +31,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ExistingStudentregis"
+            android:name=".ExitStudent.ExistingStudentregis"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

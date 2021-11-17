@@ -12,11 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.studentregistration.NewStudent.NewRegistration;
+import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
-import com.example.studentregistration.StdCard;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.play.core.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -111,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void sendToMain(){
-        Intent mainIntent = new Intent(LoginActivity.this , NewRegistration.class);
+        Intent mainIntent = new Intent(LoginActivity.this ,OtpActivity.class);
         startActivity(mainIntent);
         finish();
     }

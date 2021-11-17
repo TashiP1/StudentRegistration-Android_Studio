@@ -17,7 +17,7 @@
         android:src="@drawable/feedback" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/reg_name"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
