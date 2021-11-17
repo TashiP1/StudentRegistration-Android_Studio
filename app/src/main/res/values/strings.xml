@@ -54,6 +54,10 @@
     <string name="eparent">Email of Parent</string>
     <string name="cparent">Current Address of Parent</string>
     <string name="log">Log Out</string>
+    <string name="repeat">List All module for Repeat</string>
+    <string name="format">Module Code/ Year/ Semester</string>
+    <string name="module">Enter Repeat Module</string>
+
 
 
 </resources>

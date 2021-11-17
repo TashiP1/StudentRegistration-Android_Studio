@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ExitRegistration extends Fragment implements AdapterView.OnItemSelectedListener{
 
     View view;
-    EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, cid;
+    EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, cid, Mrepeat;
     Button regBtn;
     Spinner Dept, YearStudy, Semester;
     String Deptitem, yearitem, semitem;
@@ -65,6 +65,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         EmailParent = view.findViewById(R.id.email_parent);
         CurrentAddress = view.findViewById(R.id.address_parent);
         cid = view.findViewById(R.id.cid);
+        Mrepeat = view.findViewById(R.id.repeat);
 
         male = view.findViewById(R.id.male);
         female = view.findViewById(R.id.female);
@@ -135,6 +136,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
                 existRegistrationDetails.setName(regName.getText().toString());
                 existRegistrationDetails.setEmail(regEmail.getText().toString());
                 existRegistrationDetails.setPhone(regPhoneNo.getText().toString());
+                existRegistrationDetails.setRepeatModule(Mrepeat.getText().toString());
 
                 existRegistrationDetails.setYear(regYear.getText().toString());
                 existRegistrationDetails.setDOB(DOB.getText().toString());

@@ -16,6 +16,7 @@ public class ExistRegistrationDetails {
     private String Department;
     private String Year;
     private String Semester;
+    private String RepeatModule;
 
     public ExistRegistrationDetails() {}
 
@@ -137,5 +138,13 @@ public class ExistRegistrationDetails {
 
     public void setSemester(String semester) {
         Semester = semester;
+    }
+
+    public String getRepeatModule() {
+        return RepeatModule;
+    }
+
+    public void setRepeatModule(String repeatModule) {
+        RepeatModule = repeatModule;
     }
 }

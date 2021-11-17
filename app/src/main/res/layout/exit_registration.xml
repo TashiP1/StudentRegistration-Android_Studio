@@ -213,6 +213,32 @@
                 android:layout_height="40dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all the Repeat module"
+                android:textColor="#0E0D0D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/format"
+                android:textColor="#0B0707" />
+
+            <EditText
+                android:id="@+id/repeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/module"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
             <Button
                 android:id="@+id/reg_btn"
                 android:layout_width="154dp"
@@ -225,9 +251,8 @@
                 android:id="@+id/log_out_btn"
                 android:layout_width="154dp"
                 android:layout_height="53dp"
-                android:layout_marginTop="10dp"
-                app:backgroundTint="#0CB2FD"
-                android:text="@string/log" />
+                android:text="@string/log"
+                app:backgroundTint="#0CB2FD"/>
 
         </LinearLayout>
     </ScrollView>
