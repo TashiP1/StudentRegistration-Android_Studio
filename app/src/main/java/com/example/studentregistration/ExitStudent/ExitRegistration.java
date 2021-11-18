@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.studentregistration.NewStudent.RegistrationDetails;
 import com.example.studentregistration.R;
 import com.example.studentregistration.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,8 +40,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
     ExistRegistrationDetails existRegistrationDetails;
     int i =0;
 
-    private Button mLogOutBtn;
-    private FirebaseAuth mAuth;
 
     String[] department = {"Choose Department", "BE IT", "BE Civil", "BE Geology", "BE ECE", "BE IC", "Architecture"};
     String[] yearofstudy = {"Choose Year", "1st year", "2nd year", "3rd year", "4th year", "5th year"};
@@ -61,7 +58,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         regYear = view.findViewById(R.id.year);
         DOB = view.findViewById(R.id.dob);
         ParentName = view.findViewById(R.id.pname);
-        PNumber = view.findViewById(R.id.mobile_parents);
+        PNumber = view.findViewById(R.id.Mparent);
         EmailParent = view.findViewById(R.id.email_parent);
         CurrentAddress = view.findViewById(R.id.address_parent);
         cid = view.findViewById(R.id.cid);
@@ -77,22 +74,11 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         Semester = view.findViewById(R.id.SE);
 
         existRegistrationDetails = new ExistRegistrationDetails();
-
-        mAuth = FirebaseAuth.getInstance();
-        mLogOutBtn = view.findViewById(R.id.log_out_btn);
         regBtn = view.findViewById(R.id.reg_btn);
 
-        mLogOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                startActivity(new Intent(getContext() , LoginActivity.class));
-                getActivity().finish();
-            }
-        });
 
 
-        reference = database.getInstance().getReference().child("Registration Detail");
+        reference = database.getInstance().getReference().child("Existing Student Registration Detail");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -219,16 +205,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         else{
             existRegistrationDetails.setSemester(item);
             reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null){
-            startActivity(new Intent(getContext() , LoginActivity.class));
-            getActivity().finish();
         }
     }
 }

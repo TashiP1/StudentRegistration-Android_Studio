@@ -165,7 +165,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/mobile_parents"
+                android:id="@+id/Mparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/pnumber"
@@ -244,15 +244,7 @@
                 android:layout_width="154dp"
                 android:layout_height="53dp"
                 android:layout_marginTop="20dp"
-                app:backgroundTint="#0CB2FD"
                 android:text="Submit" />
-
-            <Button
-                android:id="@+id/log_out_btn"
-                android:layout_width="154dp"
-                android:layout_height="53dp"
-                android:text="@string/log"
-                app:backgroundTint="#0CB2FD"/>
 
         </LinearLayout>
     </ScrollView>
