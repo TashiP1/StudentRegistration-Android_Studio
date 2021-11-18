@@ -38,7 +38,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     FirebaseDatabase database;
     DatabaseReference reference;
     RegistrationDetails RegistrationDetails;
-    int i =0;
+    String id;
 
     private Button mLogOutBtn;
     private FirebaseAuth mAuth;
@@ -53,7 +53,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         view = inflater.inflate(R.layout.fragment_new_registration, container, false);
 
         regName = view.findViewById(R.id.reg_name);
-
         regyear = view.findViewById(R.id.year);
         Preschool = view.findViewById(R.id.PreSchool);
         Index = view.findViewById(R.id.index);
@@ -76,8 +75,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
 
         male = view.findViewById(R.id.male);
         female = view.findViewById(R.id.female);
-
-
         Dept = view.findViewById(R.id.programme);
 
         RegistrationDetails = new RegistrationDetails();
@@ -92,23 +89,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
                 mAuth.signOut();
                 startActivity(new Intent(getContext() , LoginActivity.class));
                 getActivity().finish();
-            }
-        });
-
-
-        reference = database.getInstance().getReference().child("New Student Registration Detail");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                if (datasnapshot.exists()){
-                    i = (int)datasnapshot.getChildrenCount();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -127,7 +107,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
 
                 RegistrationDetails.setYear(regyear.getText().toString());
                 RegistrationDetails.setName(regName.getText().toString());
-
                 RegistrationDetails.setPreviousSchool(Preschool.getText().toString());
                 RegistrationDetails.setStudentIndex(Index.getText().toString());
                 RegistrationDetails.setCID(CID.getText().toString());
@@ -147,22 +126,23 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
                 RegistrationDetails.setParrentAddress(address.getText().toString());
 
                 SaveValueDept(Deptitem);
+                reference = database.getInstance().getReference().child("New Student Registration Detail/"+ RegistrationDetails.getProgramme());
 
-                reference.child(String.valueOf(i+1)).setValue(RegistrationDetails);
+                id = System.currentTimeMillis()+"";
+                reference.child(id).setValue(RegistrationDetails);
 
 
                 if (male.isChecked()){
                     RegistrationDetails.setGender(m1);
-                    reference.child(String.valueOf(i+1)).setValue(RegistrationDetails);
+                    reference.child(id).setValue(RegistrationDetails);
                 }
                 else{
                     RegistrationDetails.setGender(m2);
-                    reference.child(String.valueOf(i+1)).setValue(RegistrationDetails);
+                    reference.child(id).setValue(RegistrationDetails);
                 }
                 Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         return view;
     }
@@ -170,7 +150,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Deptitem = Dept.getSelectedItem().toString();
-
     }
 
     @Override
@@ -184,7 +163,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         }
         else{
             RegistrationDetails.setProgramme(item);
-            reference.child(String.valueOf(i+1)).setValue(RegistrationDetails);
         }
     }
 

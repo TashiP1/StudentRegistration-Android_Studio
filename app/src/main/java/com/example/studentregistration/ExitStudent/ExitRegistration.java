@@ -33,17 +33,15 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
     EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, cid, Mrepeat;
     Button regBtn;
     Spinner Dept, YearStudy, Semester;
-    String Deptitem, yearitem, semitem;
+    String Deptitem, yearitem, semitem, id;
     RadioButton male, female, Spring, Autumn;
     FirebaseDatabase database;
     DatabaseReference reference;
     ExistRegistrationDetails existRegistrationDetails;
-    int i =0;
-
 
     String[] department = {"Choose Department", "BE IT", "BE Civil", "BE Geology", "BE ECE", "BE IC", "Architecture"};
     String[] yearofstudy = {"Choose Year", "1st year", "2nd year", "3rd year", "4th year", "5th year"};
-    String[] semester = {"Choose Semester", "1st Sem", "2nd Sem", "3rd Sem", "4th Sem", "5th Sem", "6th Sem", "7th Sem", "8th Sem", "9th Sem, 10th Sem"};
+    String[] semester = {"Choose Semester", "1st Sem", "2nd Sem"};
 
 
     @Override
@@ -75,24 +73,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
 
         existRegistrationDetails = new ExistRegistrationDetails();
         regBtn = view.findViewById(R.id.reg_btn);
-
-
-
-        reference = database.getInstance().getReference().child("Existing Student Registration Detail");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                if (datasnapshot.exists()){
-                    i = (int)datasnapshot.getChildrenCount();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         Dept.setOnItemSelectedListener(this);
         YearStudy.setOnItemSelectedListener(this);
@@ -136,25 +116,28 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
                 SaveValueYear(yearitem);
                 SaveValueSem(semitem);
 
-                reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+                reference = database.getInstance().getReference().child("Existing Student Registration Detail/"+existRegistrationDetails.getDepartment());
+
+                id = System.currentTimeMillis()+"";
+                reference.child(id).setValue(existRegistrationDetails);
 
                 if (Spring.isChecked()){
                     existRegistrationDetails.setAcademicSemister(S);
-                    reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+                    reference.child(id).setValue(existRegistrationDetails);
                 }
                 else{
                     existRegistrationDetails.setAcademicSemister(A);
-                    reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+                    reference.child(id).setValue(existRegistrationDetails);
                 }
                 Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
 
                 if (male.isChecked()){
                     existRegistrationDetails.setGender(m1);
-                    reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+                    reference.child(id).setValue(existRegistrationDetails);
                 }
                 else{
                     existRegistrationDetails.setGender(m2);
-                    reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+                    reference.child(id).setValue(existRegistrationDetails);
                 }
                 Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
             }
@@ -163,7 +146,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
 
         return view;
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -184,7 +166,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         }
         else{
             existRegistrationDetails.setDepartment(item);
-            reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
         }
     }
 
@@ -194,7 +175,6 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         }
         else{
             existRegistrationDetails.setYear(item);
-            reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
         }
     }
 
@@ -204,7 +184,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         }
         else{
             existRegistrationDetails.setSemester(item);
-            reference.child(String.valueOf(i+1)).setValue(existRegistrationDetails);
+            reference.child(id).setValue(existRegistrationDetails);
         }
     }
 }
