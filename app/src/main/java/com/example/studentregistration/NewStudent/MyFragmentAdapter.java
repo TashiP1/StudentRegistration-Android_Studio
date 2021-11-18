@@ -18,13 +18,18 @@ public class MyFragmentAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         if (position == 1){
+            return new Document();
+        }
+        else if (position == 2){
             return new Payment();
         }
-        return new NewRegistration();
+        else{
+            return new NewRegistration();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

@@ -24,7 +24,9 @@ public class NewStudentRegistration extends AppCompatActivity {
         viewPager2 = findViewById(R.id.viewPager2);
 
         tabLayout.addTab(tabLayout.newTab().setText("Registration"));
+        tabLayout.addTab(tabLayout.newTab().setText("Document"));
         tabLayout.addTab(tabLayout.newTab().setText("Payment"));
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter = new MyFragmentAdapter(fragmentManager , getLifecycle());
