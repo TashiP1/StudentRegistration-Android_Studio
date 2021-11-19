@@ -1,6 +1,5 @@
 package com.example.studentregistration.NewStudent;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -45,10 +44,10 @@ public class Payment extends Fragment {
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
-    private FirebaseDatabase database;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     private StorageTask mUploadTask;
+    RegistrationDetails RegistrationDetails;
 
 
     @Override
@@ -64,8 +63,11 @@ public class Payment extends Fragment {
         mEditTextFileName = view.findViewById(R.id.edit_text_file_name);
         mImageView = view.findViewById(R.id.image_view);
         mProgressBar = view.findViewById(R.id.progress_bar);
+        RegistrationDetails = new RegistrationDetails();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("New Student Registration Detail/"+"Payments");
+
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,10 +139,7 @@ public class Payment extends Fragment {
                             }, 500);
 
                             Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
-                                    taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-                            mDatabaseRef = database.getInstance().getReference().child("Payments/"+upload);
-
+                            mDatabaseRef.child("Dtails").setValue(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
