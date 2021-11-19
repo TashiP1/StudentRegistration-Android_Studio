@@ -14,10 +14,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026">
+        app:layout_constraintVertical_bias="0.112">
 
         <ImageView
             android:id="@+id/rublogo"
@@ -44,8 +44,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="275dp"
-        android:layout_height="337dp"
+        android:layout_width="281dp"
+        android:layout_height="245dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,26 +78,17 @@
             android:typeface="sans" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/CardId"
+            android:id="@+id/cstwebsite"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/my_button"
-            android:text="Generate College ID Card"
+            android:text="Know Your College"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:typeface="sans" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/Change"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/my_button"
-            android:text="Change Course"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:typeface="sans" />
+
     </LinearLayout>
 
     <TextView
@@ -115,6 +106,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.828" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

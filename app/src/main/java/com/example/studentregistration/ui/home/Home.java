@@ -8,18 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.studentregistration.ChangeCourse;
+import com.example.studentregistration.Website;
 import com.example.studentregistration.ExitStudent.ExistingStudentregis;
 import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
-import com.example.studentregistration.StdCard;
-import com.example.studentregistration.login.LoginActivity;
-import com.example.studentregistration.login.MainLogin;
 
 public class Home extends Fragment {
 
     View view;
-    Button RegisNew, ExistingRegis, GenerateCard, ChangeCourse;
+    Button RegisNew, ExistingRegis, CSTWebsite;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,8 +26,7 @@ public class Home extends Fragment {
 
        RegisNew = view.findViewById(R.id.NewRegis);
        ExistingRegis = view.findViewById(R.id.ExistingStudent);
-       GenerateCard = view.findViewById(R.id.CardId);
-       ChangeCourse = view.findViewById(R.id.Change);
+       CSTWebsite = view.findViewById(R.id.cstwebsite);
 
        RegisNew.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -48,21 +44,14 @@ public class Home extends Fragment {
            }
        });
 
-       GenerateCard.setOnClickListener(new View.OnClickListener() {
+       CSTWebsite.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getContext(), StdCard.class);
+               Intent intent = new Intent(getContext(), Website.class);
                startActivity(intent);
            }
        });
 
-       ChangeCourse.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(getContext(), ChangeCourse.class);
-               startActivity(intent);
-           }
-       });
 
         return view;
     }

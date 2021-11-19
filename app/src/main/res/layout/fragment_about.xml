@@ -19,33 +19,42 @@
             android:textSize="20sp" />
 
 
-        <TextView android:id="@+id/secondTxt"
+        <TextView
+            android:id="@+id/secondTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="@string/text2"
-            android:layout_gravity="center"/>
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
         <TextView android:id="@+id/thirdTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/text1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
 
         <TextView android:id="@+id/sixTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/text1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
 
         <TextView android:id="@+id/sevenTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/text2"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/eightTxt"
@@ -54,13 +63,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="@string/Contact"
-            />
+            android:textColor="#000000"
+            android:textSize="16sp"/>
+
         <TextView android:id="@+id/nineTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/cont"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
 
 
     </LinearLayout>

@@ -26,11 +26,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ChangeCourse"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".StdCard"
+            android:name=".Website"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
