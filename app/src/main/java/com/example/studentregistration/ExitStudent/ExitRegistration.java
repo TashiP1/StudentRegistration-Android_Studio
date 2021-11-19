@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ExitRegistration extends Fragment implements AdapterView.OnItemSelectedListener{
 
     View view;
-    EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, cid, Mrepeat;
+    EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, StudentNo, Mrepeat;
     Button regBtn;
     Spinner Dept, YearStudy, Semester;
     String Deptitem, yearitem, semitem, id;
@@ -51,7 +51,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         PNumber = view.findViewById(R.id.Mparent);
         EmailParent = view.findViewById(R.id.email_parent);
         CurrentAddress = view.findViewById(R.id.address_parent);
-        cid = view.findViewById(R.id.cid);
+        StudentNo = view.findViewById(R.id.cid);
         Mrepeat = view.findViewById(R.id.repeat);
 
         male = view.findViewById(R.id.male);
@@ -102,34 +102,32 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
                 existRegistrationDetails.setParentNumber(PNumber.getText().toString());
                 existRegistrationDetails.setEmailParent(EmailParent.getText().toString());
                 existRegistrationDetails.setParentCurrentAddress(CurrentAddress.getText().toString());
-                existRegistrationDetails.setCid(cid.getText().toString());
+                existRegistrationDetails.setStudentNo(StudentNo.getText().toString());
 
                 SaveValueDept(Deptitem);
                 SaveValueYear(yearitem);
                 SaveValueSem(semitem);
 
-                reference = database.getInstance().getReference().child("Existing Student Registration Detail/"+existRegistrationDetails.getDepartment());
+                reference = database.getInstance().getReference().child("Existing Student Registration Detail/"+existRegistrationDetails.getYear()+ "/"+existRegistrationDetails.getDepartment());
 
-                id = System.currentTimeMillis()+"";
-                reference.child(id).setValue(existRegistrationDetails);
+                reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
 
                 if (Spring.isChecked()){
                     existRegistrationDetails.setAcademicSemister(S);
-                    reference.child(id).setValue(existRegistrationDetails);
+                    reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
                 }
                 else{
                     existRegistrationDetails.setAcademicSemister(A);
-                    reference.child(id).setValue(existRegistrationDetails);
+                    reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
                 }
-                Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
 
                 if (male.isChecked()){
                     existRegistrationDetails.setGender(m1);
-                    reference.child(id).setValue(existRegistrationDetails);
+                    reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
                 }
                 else{
                     existRegistrationDetails.setGender(m2);
-                    reference.child(id).setValue(existRegistrationDetails);
+                    reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
                 }
                 Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
             }
@@ -154,7 +152,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
 
     void SaveValueDept(String item){
         if (item == "Choose Department"){
-            Toast.makeText(getContext(),"Select Department",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"Select Department",Toast.LENGTH_SHORT).show();
         }
         else{
             existRegistrationDetails.setDepartment(item);
@@ -163,7 +161,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
 
     void SaveValueYear(String item){
         if (item == "Choose Year"){
-            Toast.makeText(getContext(),"Select year",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"Select year",Toast.LENGTH_SHORT).show();
         }
         else{
             existRegistrationDetails.setYear(item);
@@ -172,11 +170,11 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
 
     void SaveValueSem(String item){
         if (item == "Choose Semester"){
-            Toast.makeText(getContext(),"Select Semester",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"Select Semester",Toast.LENGTH_SHORT).show();
         }
         else{
             existRegistrationDetails.setSemester(item);
-            reference.child(id).setValue(existRegistrationDetails);
+            reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
         }
     }
 }

@@ -66,8 +66,6 @@ public class Payment extends Fragment {
         mProgressBar = view.findViewById(R.id.progress_bar);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        mDatabaseRef = database.getInstance().getReference("Uploads");
-
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +105,7 @@ public class Payment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
@@ -141,8 +139,8 @@ public class Payment extends Fragment {
                             Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);
+                            mDatabaseRef = database.getInstance().getReference().child("Payments/"+upload);
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

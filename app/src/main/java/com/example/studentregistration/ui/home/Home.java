@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.studentregistration.ChangeCourse;
 import com.example.studentregistration.ExitStudent.ExistingStudentregis;
+import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
 import com.example.studentregistration.StdCard;
 import com.example.studentregistration.login.LoginActivity;
@@ -34,7 +35,7 @@ public class Home extends Fragment {
        RegisNew.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getContext(), LoginActivity.class);
+               Intent intent = new Intent(getContext(), NewStudentRegistration.class);
                startActivity(intent);
            }
        });
@@ -42,7 +43,7 @@ public class Home extends Fragment {
        ExistingRegis.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getContext(), MainLogin.class);
+               Intent intent = new Intent(getContext(), ExistingStudentregis.class);
                startActivity(intent);
            }
        });

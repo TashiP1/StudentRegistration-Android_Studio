@@ -12,7 +12,7 @@ public class ExistRegistrationDetails {
     private String ParentNumber;
     private String EmailParent;
     private String ParentCurrentAddress;
-    private String Cid;
+    private String StudentNo;
     private String Department;
     private String Year;
     private String Semester;
@@ -108,12 +108,12 @@ public class ExistRegistrationDetails {
         ParentCurrentAddress = parentCurrentAddress;
     }
 
-    public String getCid() {
-        return Cid;
+    public String getStudentNo() {
+        return StudentNo;
     }
 
-    public void setCid(String cid) {
-        Cid = cid;
+    public void setStudentNo(String studentNo) {
+        StudentNo = studentNo;
     }
 
     public String getDepartment() {

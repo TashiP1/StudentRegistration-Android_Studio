@@ -38,7 +38,6 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     FirebaseDatabase database;
     DatabaseReference reference;
     RegistrationDetails RegistrationDetails;
-    String id;
 
     private Button mLogOutBtn;
     private FirebaseAuth mAuth;
@@ -128,17 +127,16 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
                 SaveValueDept(Deptitem);
                 reference = database.getInstance().getReference().child("New Student Registration Detail/"+ RegistrationDetails.getProgramme());
 
-                id = System.currentTimeMillis()+"";
-                reference.child(id).setValue(RegistrationDetails);
+                reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
 
 
                 if (male.isChecked()){
                     RegistrationDetails.setGender(m1);
-                    reference.child(id).setValue(RegistrationDetails);
+                    reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
                 }
                 else{
                     RegistrationDetails.setGender(m2);
-                    reference.child(id).setValue(RegistrationDetails);
+                    reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
                 }
                 Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
             }
@@ -159,7 +157,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
 
     void SaveValueDept(String item){
         if (item == "Choose Department"){
-            Toast.makeText(getContext(),"Select Department",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"Select Department",Toast.LENGTH_SHORT).show();
         }
         else{
             RegistrationDetails.setProgramme(item);
