@@ -40,7 +40,7 @@ public class Payment extends Fragment {
     private Button mButtonChooseImage;
     private Button mButtonUpload;
     private TextView mTextViewShowUploads;
-    private EditText mEditTextFileName;
+    private EditText payment;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
@@ -48,7 +48,6 @@ public class Payment extends Fragment {
     private DatabaseReference mDatabaseRef;
     private StorageTask mUploadTask;
     RegistrationDetails RegistrationDetails;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +59,7 @@ public class Payment extends Fragment {
         mButtonChooseImage = view.findViewById(R.id.button_choose_image);
         mButtonUpload = view.findViewById(R.id.button_upload);
         mTextViewShowUploads = view.findViewById(R.id.text_view_show_uploads);
-        mEditTextFileName = view.findViewById(R.id.edit_text_file_name);
+        payment = view.findViewById(R.id.edit_text_file_name);
         mImageView = view.findViewById(R.id.image_view);
         mProgressBar = view.findViewById(R.id.progress_bar);
         RegistrationDetails = new RegistrationDetails();
@@ -139,7 +138,8 @@ public class Payment extends Fragment {
                             }, 500);
 
                             Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
-                            mDatabaseRef.child("Dtails").setValue(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+                            RegistrationDetails.setPayment(payment.getText().toString());
+                            mDatabaseRef.child(RegistrationDetails.getPayment()).setValue(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

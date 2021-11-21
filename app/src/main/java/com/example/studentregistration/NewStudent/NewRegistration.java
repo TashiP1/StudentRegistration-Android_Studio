@@ -13,18 +13,14 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentregistration.R;
 import com.example.studentregistration.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 public class NewRegistration extends Fragment implements AdapterView.OnItemSelectedListener{
@@ -103,42 +99,54 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
             public void onClick(View v) {
                 String m1 = male.getText().toString();
                 String m2 = female.getText().toString();
+                String index1 = Index.getText().toString();
+                String name = regName.getText().toString();
+                String cidCard = CID.getText().toString();
 
-                RegistrationDetails.setYear(regyear.getText().toString());
-                RegistrationDetails.setName(regName.getText().toString());
-                RegistrationDetails.setPreviousSchool(Preschool.getText().toString());
-                RegistrationDetails.setStudentIndex(Index.getText().toString());
-                RegistrationDetails.setCID(CID.getText().toString());
-                RegistrationDetails.setDOB(DOB.getText().toString());
-                RegistrationDetails.setPhoneNo(regPhone.getText().toString());
-                RegistrationDetails.setHouseNo(HouseNo.getText().toString());
-                RegistrationDetails.setThramNo(ThramNo.getText().toString());
-                RegistrationDetails.setVillage(village.getText().toString());
-                RegistrationDetails.setDzongkhag(Dzongkhag.getText().toString());
-                RegistrationDetails.setGewog(Gewog.getText().toString());
-                RegistrationDetails.setFatherName(Fname.getText().toString());
-                RegistrationDetails.setFatherCID(fatherd.getText().toString());
-                RegistrationDetails.setMotherName(Mname.getText().toString());
-                RegistrationDetails.setMotherCID(motherId.getText().toString());
-                RegistrationDetails.setParentphoneNo(Mobileparents.getText().toString());
-                RegistrationDetails.setParentEmail(email_parents.getText().toString());
-                RegistrationDetails.setParrentAddress(address.getText().toString());
-
-                SaveValueDept(Deptitem);
-                reference = database.getInstance().getReference().child("New Student Registration Detail/"+ RegistrationDetails.getProgramme());
-
-                reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
-
-
-                if (male.isChecked()){
-                    RegistrationDetails.setGender(m1);
-                    reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
+                if ((index1.matches("") || index1.length() != 8) || name.matches("") || cidCard.matches("")){
+                    Toast.makeText(getContext(),"not Uploaded", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else{
-                    RegistrationDetails.setGender(m2);
+                else
+                    {
+                    RegistrationDetails.setYear(regyear.getText().toString());
+                    RegistrationDetails.setName(name);
+                    RegistrationDetails.setPreviousSchool(Preschool.getText().toString());
+                    RegistrationDetails.setStudentIndex(index1);
+                    RegistrationDetails.setCID(cidCard);
+                    RegistrationDetails.setDOB(DOB.getText().toString());
+                    RegistrationDetails.setPhoneNo(regPhone.getText().toString());
+                    RegistrationDetails.setHouseNo(HouseNo.getText().toString());
+                    RegistrationDetails.setThramNo(ThramNo.getText().toString());
+                    RegistrationDetails.setVillage(village.getText().toString());
+                    RegistrationDetails.setDzongkhag(Dzongkhag.getText().toString());
+                    RegistrationDetails.setGewog(Gewog.getText().toString());
+                    RegistrationDetails.setFatherName(Fname.getText().toString());
+                    RegistrationDetails.setFatherCID(fatherd.getText().toString());
+                    RegistrationDetails.setMotherName(Mname.getText().toString());
+                    RegistrationDetails.setMotherCID(motherId.getText().toString());
+                    RegistrationDetails.setParentphoneNo(Mobileparents.getText().toString());
+                    RegistrationDetails.setParentEmail(email_parents.getText().toString());
+                    RegistrationDetails.setParrentAddress(address.getText().toString());
+
+
+                    SaveValueDept(Deptitem);
+                    reference = database.getInstance().getReference().child("New Student Registration Detail/"+ RegistrationDetails.getProgramme());
+
                     reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
+
+
+                    if (male.isChecked()){
+                        RegistrationDetails.setGender(m1);
+                        reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
+                    }
+                    else{
+                        RegistrationDetails.setGender(m2);
+                        reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
+                    }
+                    Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(getContext(),"Uploaded Successfuly", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -157,7 +165,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
 
     void SaveValueDept(String item){
         if (item == "Choose Department"){
-            //Toast.makeText(getContext(),"Select Department",Toast.LENGTH_SHORT).show();
+            //
         }
         else{
             RegistrationDetails.setProgramme(item);

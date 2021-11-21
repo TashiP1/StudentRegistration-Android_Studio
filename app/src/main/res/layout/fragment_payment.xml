@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="166dp"
-        android:hint="Enter file name" />
+        android:hint="Enter index Number"
+        android:minHeight="48dp" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -61,7 +62,7 @@
         android:layout_marginBottom="-5dp"
         android:layout_toEndOf="@+id/button_upload"
         android:gravity="center"
-        android:text="Show Uploads"
+        android:text="Student index is Compulsary"
         android:textSize="16sp" />
 
 

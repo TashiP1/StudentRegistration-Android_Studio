@@ -22,6 +22,7 @@ public class RegistrationDetails {
     private String ParentEmail;
     private String ParrentAddress;
     private String Programme;
+    private String Payment;
 
 
     public RegistrationDetails() {}
@@ -192,5 +193,13 @@ public class RegistrationDetails {
 
     public void setProgramme(String programme) {
         Programme = programme;
+    }
+
+    public String getPayment() {
+        return Payment;
+    }
+
+    public void setPayment(String payment) {
+        Payment = payment;
     }
 }
