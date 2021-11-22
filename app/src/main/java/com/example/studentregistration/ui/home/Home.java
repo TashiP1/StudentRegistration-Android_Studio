@@ -12,6 +12,8 @@ import com.example.studentregistration.Website;
 import com.example.studentregistration.ExitStudent.ExistingStudentregis;
 import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
+import com.example.studentregistration.login.LoginActivity;
+import com.example.studentregistration.login.MainLogin;
 
 public class Home extends Fragment {
 
@@ -31,7 +33,7 @@ public class Home extends Fragment {
        RegisNew.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getContext(), NewStudentRegistration.class);
+               Intent intent = new Intent(getContext(), LoginActivity.class);
                startActivity(intent);
            }
        });
@@ -39,7 +41,7 @@ public class Home extends Fragment {
        ExistingRegis.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getContext(), ExistingStudentregis.class);
+               Intent intent = new Intent(getContext(), MainLogin.class);
                startActivity(intent);
            }
        });

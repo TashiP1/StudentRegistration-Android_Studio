@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button mSendOTPBtn;
     private TextView processText;
-    private EditText countryCodeEdit , phoneNumberEdit;
+    private EditText countryCodeEdit , phoneNumberEdit, inputEmail;
     private FirebaseAuth auth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
 
@@ -42,30 +45,46 @@ public class LoginActivity extends AppCompatActivity {
         processText = findViewById(R.id.processText);
         countryCodeEdit = findViewById(R.id.input_country_code);
         phoneNumberEdit = findViewById(R.id.input_phone);
+        inputEmail=findViewById(R.id.indexEmail);
 
         auth = FirebaseAuth.getInstance();
 
         mSendOTPBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                String country_code = countryCodeEdit.getText().toString();
-                String phone = phoneNumberEdit.getText().toString();
-                String phoneNumber = "+" + country_code + "" + phone;
-                if (!country_code.isEmpty() || !phone.isEmpty()){
-                    PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
-                            .setPhoneNumber(phoneNumber)
-                            .setTimeout(60L , TimeUnit.SECONDS)
-                            .setActivity(LoginActivity.this)
-                            .setCallbacks(mCallBacks)
-                            .build();
-                    PhoneAuthProvider.verifyPhoneNumber(options);
-                }else{
-                    processText.setText("Please Enter Country Code and Phone Number");
-                    processText.setTextColor(Color.RED);
-                    processText.setVisibility(View.VISIBLE);
-                }
+
+                auth.fetchSignInMethodsForEmail(inputEmail.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task)
+                            {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Verification Failed", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    String country_code = countryCodeEdit.getText().toString();
+                                    String phone = phoneNumberEdit.getText().toString();
+                                    String phoneNumber = "+" + country_code + "" + phone;
+
+                                    if (!country_code.isEmpty() || !phone.isEmpty()){
+                                        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
+                                                .setPhoneNumber(phoneNumber)
+                                                .setTimeout(60L , TimeUnit.SECONDS)
+                                                .setActivity(LoginActivity.this)
+                                                .setCallbacks(mCallBacks)
+                                                .build();
+                                        PhoneAuthProvider.verifyPhoneNumber(options);
+                                    }else {
+                                        processText.setText("Please Enter Country Code and Phone Number");
+                                        processText.setTextColor(Color.RED);
+                                        processText.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            }
+                        });
             }
         });
+
         mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {

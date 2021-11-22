@@ -39,6 +39,16 @@
             android:textColor="#090808"
             android:textSize="16sp" />
 
+        <EditText
+            android:id="@+id/indexEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter email address"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
