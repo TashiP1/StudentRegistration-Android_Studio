@@ -1,5 +1,6 @@
 package com.example.studentregistration.ExitStudent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.studentregistration.MainActivity;
 import com.example.studentregistration.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,8 +27,8 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
     View view;
     EditText regName, regEmail, regPhoneNo, regYear, DOB, ParentName, PNumber, EmailParent, CurrentAddress, StudentNo, Mrepeat;
     Button regBtn;
-    Spinner Dept, YearStudy, Semester;
-    String Deptitem, yearitem, semitem, id;
+    Spinner Dept, YearStudy, Semester, scholarshiptype;
+    String Deptitem, yearitem, semitem, Sitem;
     RadioButton male, female, Spring, Autumn;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -34,7 +37,9 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
     String[] department = {"Choose Department", "BE IT", "BE Civil", "BE Geology", "BE ECE", "BE IC", "Architecture"};
     String[] yearofstudy = {"Choose Year", "1st year", "2nd year", "3rd year", "4th year", "5th year"};
     String[] semester = {"Choose Semester", "1st Sem", "2nd Sem"};
+    String[] scholarship = {"Scholarship Type", "Government Scholarship", "Self-Financed", "Other Scholarship"};
 
+    private Button mLogOutBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +59,9 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         StudentNo = view.findViewById(R.id.cid);
         Mrepeat = view.findViewById(R.id.repeat);
 
+        mLogOutBtn = view.findViewById(R.id.log_out_btn);
+        FirebaseAuth mAuth;
+
         male = view.findViewById(R.id.male);
         female = view.findViewById(R.id.female);
         Spring = view.findViewById(R.id.spring);
@@ -62,13 +70,16 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         Dept = view.findViewById(R.id.programme);
         YearStudy = view.findViewById(R.id.yearOfStudy);
         Semester = view.findViewById(R.id.SE);
+        scholarshiptype = view.findViewById(R.id.scholarship);
 
         existRegistrationDetails = new ExistRegistrationDetails();
         regBtn = view.findViewById(R.id.reg_btn);
+        mAuth = FirebaseAuth.getInstance();
 
         Dept.setOnItemSelectedListener(this);
         YearStudy.setOnItemSelectedListener(this);
         Semester.setOnItemSelectedListener(this);
+        scholarshiptype.setOnItemSelectedListener(this);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, department);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -81,6 +92,19 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         ArrayAdapter SemesterAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, semester);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Semester.setAdapter(SemesterAdapter);
+
+        ArrayAdapter TypeAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, scholarship);
+        TypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        scholarshiptype.setAdapter(TypeAdapter);
+
+        mLogOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(getContext() , MainActivity.class));
+                getActivity().finish();
+            }
+        });
 
 
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +131,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
                 SaveValueDept(Deptitem);
                 SaveValueYear(yearitem);
                 SaveValueSem(semitem);
+                SaveValueScholarship(Sitem);
 
                 reference = database.getInstance().getReference().child("Existing Student Registration Detail/"+existRegistrationDetails.getYear()+ "/"+existRegistrationDetails.getDepartment());
 
@@ -142,6 +167,7 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         Deptitem = Dept.getSelectedItem().toString();
         yearitem = YearStudy.getSelectedItem().toString();
         semitem = Semester.getSelectedItem().toString();
+        Sitem = scholarshiptype.getSelectedItem().toString();
 
     }
 
@@ -174,7 +200,15 @@ public class ExitRegistration extends Fragment implements AdapterView.OnItemSele
         }
         else{
             existRegistrationDetails.setSemester(item);
-            reference.child(existRegistrationDetails.getStudentNo()).setValue(existRegistrationDetails);
+        }
+    }
+
+    void SaveValueScholarship(String item){
+        if (item == "Scholarship Type"){
+            //
+        }
+        else{
+            existRegistrationDetails.setScholarshipType(item);
         }
     }
 }

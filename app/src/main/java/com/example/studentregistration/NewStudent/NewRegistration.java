@@ -28,8 +28,8 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     View view;
     EditText regyear, regName, Preschool, Index, CID, DOB, regPhone, HouseNo, ThramNo, village, Gewog, Dzongkhag, Fname, fatherd, Mname, motherId, Mobileparents, email_parents, address;
     Button regBtn;
-    Spinner Dept;
-    String Deptitem;
+    Spinner Dept, scholarshiptype;
+    String Deptitem, Sitem;
     RadioButton male, female;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -39,6 +39,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     private FirebaseAuth mAuth;
 
     String[] department = {"Choose Department", "BE IT", "BE Civil", "BE Geology", "BE ECE", "BE IC", "Architecture"};
+    String[] scholarship = {"Scholarship Type", "Government Scholarship", "Self-Financed", "Other Scholarship"};
 
 
     @Override
@@ -71,6 +72,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         male = view.findViewById(R.id.male);
         female = view.findViewById(R.id.female);
         Dept = view.findViewById(R.id.programme);
+        scholarshiptype = view.findViewById(R.id.scholarship);
 
         RegistrationDetails = new RegistrationDetails();
 
@@ -88,10 +90,15 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         });
 
         Dept.setOnItemSelectedListener(this);
+        scholarshiptype.setOnItemSelectedListener(this);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, department);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Dept.setAdapter(arrayAdapter);
+
+        ArrayAdapter TypeAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, scholarship);
+        TypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        scholarshiptype.setAdapter(TypeAdapter);
 
 
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +111,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
                 String cidCard = CID.getText().toString();
 
                 if ((index1.matches("") || index1.length() != 8) || name.matches("") || cidCard.matches("")){
-                    Toast.makeText(getContext(),"not Uploaded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Fill in all the details", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else
@@ -131,6 +138,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
 
 
                     SaveValueDept(Deptitem);
+                    SaveValueScholarship(Sitem);
                     reference = database.getInstance().getReference().child("New Student Registration Detail/"+ RegistrationDetails.getProgramme());
 
                     reference.child(RegistrationDetails.getStudentIndex()).setValue(RegistrationDetails);
@@ -156,6 +164,7 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Deptitem = Dept.getSelectedItem().toString();
+        Sitem = scholarshiptype.getSelectedItem().toString();
     }
 
     @Override
@@ -169,6 +178,15 @@ public class NewRegistration extends Fragment implements AdapterView.OnItemSelec
         }
         else{
             RegistrationDetails.setProgramme(item);
+        }
+    }
+
+    void SaveValueScholarship(String item){
+        if (item == "Scholarship Type"){
+            //
+        }
+        else{
+            RegistrationDetails.setScholarshipType(item);
         }
     }
 

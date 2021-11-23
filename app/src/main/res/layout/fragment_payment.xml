@@ -62,7 +62,7 @@
         android:layout_marginBottom="-5dp"
         android:layout_toEndOf="@+id/button_upload"
         android:gravity="center"
-        android:text="Student index is Compulsary"
+        android:text="Need Student index"
         android:textSize="16sp" />
 
 

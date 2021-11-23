@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.studentregistration.Website;
-import com.example.studentregistration.ExitStudent.ExistingStudentregis;
-import com.example.studentregistration.NewStudent.NewStudentRegistration;
 import com.example.studentregistration.R;
 import com.example.studentregistration.login.LoginActivity;
 import com.example.studentregistration.login.MainLogin;

@@ -17,6 +17,7 @@ public class ExistRegistrationDetails {
     private String Year;
     private String Semester;
     private String RepeatModule;
+    private String ScholarshipType;
 
     public ExistRegistrationDetails() {}
 
@@ -146,5 +147,13 @@ public class ExistRegistrationDetails {
 
     public void setRepeatModule(String repeatModule) {
         RepeatModule = repeatModule;
+    }
+
+    public String getScholarshipType() {
+        return ScholarshipType;
+    }
+
+    public void setScholarshipType(String scholarshipType) {
+        ScholarshipType = scholarshipType;
     }
 }

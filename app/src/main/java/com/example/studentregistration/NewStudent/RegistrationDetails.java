@@ -23,6 +23,7 @@ public class RegistrationDetails {
     private String ParrentAddress;
     private String Programme;
     private String Payment;
+    private String ScholarshipType;
 
 
     public RegistrationDetails() {}
@@ -201,5 +202,13 @@ public class RegistrationDetails {
 
     public void setPayment(String payment) {
         Payment = payment;
+    }
+
+    public String getScholarshipType() {
+        return ScholarshipType;
+    }
+
+    public void setScholarshipType(String scholarshipType) {
+        ScholarshipType = scholarshipType;
     }
 }

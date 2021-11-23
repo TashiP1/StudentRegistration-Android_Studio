@@ -65,7 +65,7 @@ public class Payment extends Fragment {
         RegistrationDetails = new RegistrationDetails();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("New Student Registration Detail/"+"Payments");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Payments");
 
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
